@@ -1,0 +1,6 @@
+{
+  "name": "Vivekananda Driving School",
+  "description": "Premium landing page for Vivekananda Driving School featuring modern animations and cinematic storytelling.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
