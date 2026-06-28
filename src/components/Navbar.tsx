@@ -46,7 +46,7 @@ export function Navbar() {
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-purple to-brand-purple-light flex items-center justify-center shadow-[0_0_20px_rgba(139,92,246,0.3)] group-hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] transition-all duration-300">
               <span className="font-display font-bold text-white text-xl tracking-tighter">V</span>
             </div>
-            <span className="font-display font-bold text-lg hidden sm:block tracking-tight text-white/90">
+            <span className="font-display font-bold text-lg tracking-tight text-white/90">
               Vivekananda<br/><span className="text-sm text-brand-purple-light font-medium tracking-normal">Driving School</span>
             </span>
           </a>

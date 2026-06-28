@@ -1,8 +1,17 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { siteData } from '../data/content';
 import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
 
 export function Contact() {
+  const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const text = `Hi, I'm ${formData.name}. %0A%0APhone: ${formData.phone} %0A%0AMessage: ${formData.message}`;
+    window.open(`https://wa.me/${siteData.whatsapp}?text=${text}`, '_blank');
+  };
+
   return (
     <section id="contact" className="py-24 relative bg-brand-gray/50">
       <div className="max-w-7xl mx-auto px-6">
@@ -62,11 +71,14 @@ export function Contact() {
             className="glass-panel p-8 md:p-10 rounded-[2.5rem]"
           >
             <h3 className="font-display text-2xl font-medium text-white mb-6">Send a Message</h3>
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div>
                 <label className="block text-xs font-medium text-white/50 mb-2 ml-1">Full Name</label>
                 <input 
                   type="text" 
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
                   placeholder="John Doe"
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-all"
                 />
@@ -75,6 +87,9 @@ export function Contact() {
                 <label className="block text-xs font-medium text-white/50 mb-2 ml-1">Phone Number</label>
                 <input 
                   type="tel" 
+                  required
+                  value={formData.phone}
+                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
                   placeholder="+91 98765 43210"
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-all"
                 />
@@ -83,11 +98,14 @@ export function Contact() {
                 <label className="block text-xs font-medium text-white/50 mb-2 ml-1">Message</label>
                 <textarea 
                   rows={4}
+                  required
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
                   placeholder="I'm interested in manual car training..."
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-all resize-none"
                 ></textarea>
               </div>
-              <button className="w-full py-4 rounded-xl bg-white text-black font-medium hover:bg-white/90 transition-all flex items-center justify-center gap-2 mt-4">
+              <button type="submit" className="w-full py-4 rounded-xl bg-white text-black font-medium hover:bg-white/90 transition-all flex items-center justify-center gap-2 mt-4">
                 Request Callback
               </button>
             </form>
